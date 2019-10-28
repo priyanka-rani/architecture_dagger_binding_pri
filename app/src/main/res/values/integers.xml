@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ripple_effect_duration">200</integer>
+    <integer name="loading_duration">60</integer>
+    <integer name="otp_length">6</integer>
+    <integer name="maxLengthMobile">15</integer>
+    <integer name="maxLengthFax">15</integer>
+    <integer name="maxLengthAmount">10</integer>
+    <integer name="maxLengthApproveAmount">10</integer>
+    <integer name="maxLengthEmail">50</integer>
+    <integer name="maxLengthPass">20</integer>
+    <integer name="maxLengthVA">20</integer>
+    <integer name="maxLengthPurpose">64</integer>
+    <integer name="maxLengthPoliceStation">64</integer>
+    <integer name="maxLengthPostCode">4</integer>
+
+    <integer name="maxLengthAddress">35</integer>
+    <integer name="maxLengthName">64</integer>
+
+    <integer name="viewfinder_border_width">4</integer>
+    <integer name="viewfinder_border_length">60</integer>
+
+    <integer name="minLengthBank">10</integer>
+    <integer name="maxLengthBank">20</integer>
+    <integer name="minLengthCard">12</integer>
+    <integer name="maxLengthCard">16</integer>
+
+    <integer name="maxLengthCVV">4</integer>
+    <integer name="maxLengthCompanyShortName">10</integer>
+    <integer name="maxLengthPoService">30</integer>
+    <integer name="maxLengthDocumentNo">25</integer>
+    <integer name="maxLengthDoB">20</integer>
+    <integer name="maxLengthNID">17</integer>
+    <integer name="maxLengthTxID">20</integer>
+    <integer name="placeholder">884</integer>
+    <integer name="errorDrawable">885</integer>
+</resources>

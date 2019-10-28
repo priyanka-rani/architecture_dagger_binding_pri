@@ -1,0 +1,152 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-allopen'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-android-extensions'
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.android.example.github.testing.OpenClass'
+}
+android {
+    signingConfigs {
+        config {
+            keyAlias 'rcis'
+            keyPassword 'Rcis123$..'
+            storeFile file('../cashbaba_keystore')
+            storePassword 'Rcis123$..'
+        }
+    }
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId "com.pri.sample_mvvm"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+        testInstrumentationRunner "com.android.example.github.util.GithubTestRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        kapt {
+            javacOptions {
+                // Increase the max count of errors from annotation processors.
+                // Default is 100.
+                option("-Xmaxerrs", 500)
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            manifestPlaceholders.debug = true
+            testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
+            signingConfig signingConfigs.config
+        }
+        release {
+            manifestPlaceholders.debug = false
+            minifyEnabled true
+            shrinkResources false
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.4+"
+}
+
+dependencies {
+    implementation deps.support.design
+    implementation deps.support.annotations
+    implementation deps.support.v4
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.navigation_ui
+    implementation deps.room.runtime
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    implementation deps.constraint_layout
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.reflect
+    implementation deps.kotlin.coroutine
+    implementation deps.kotlin.core_ktx
+    //adding paging
+    implementation deps.kotlin.paging_ktx
+
+    implementation deps.timber
+    implementation deps.event
+    implementation deps.circleImageview
+    implementation deps.picasso
+    api deps.cropper
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+    kapt deps.room.compiler
+    kapt deps.lifecycle.compiler
+    testImplementation deps.junit
+    testImplementation deps.mock_web_server
+    testImplementation deps.arch_core.testing
+    testImplementation deps.mockito.core
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.support.app_compat
+    androidTestImplementation deps.support.design
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.arch_core.testing
+    androidTestImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+
+}

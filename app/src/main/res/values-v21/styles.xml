@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="@style/AppBaseTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
+        <!--<item name="android:textViewStyle">@style/MyTextViewStyle</item>-->
+
+    </style>
+    <style name="SplashBaseTheme" parent="AppTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--Required Api 21 above-->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
+    </style>
+</resources>

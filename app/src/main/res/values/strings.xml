@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (C) 2017 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <string name="app_name">Architecture Boilerplate App</string>
+    <string name="loading">Loading....</string>
+    <string name="search_title">search</string>
+    <string name="close">Close</string>
+    <string name="no_internet_error">No Internet Error</string>
+    <string name="error_invalid_mobile">Invalid Mobile Number</string>
+    <string name="error_invalid_email">Invalid Email Address</string>
+    <string name="error_invalid_name">Invalid Name</string>
+    <string name="empty_field">This field is empty</string>
+</resources>
